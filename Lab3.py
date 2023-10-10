@@ -1,10 +1,10 @@
 """
- Name: Your Name
+ Name: Ashley & Heven 
  Assignment: Lab 3 - Process dataset
  Course: CS 330
- Semester: 20xx
+ Semester: 2023
  Instructor: Dr. Cao
- Date: the current date
+ Date: 10/10/
  Sources consulted: any books, individuals, etc consulted
 
  Known Bugs: description of known bugs and other program imperfections
