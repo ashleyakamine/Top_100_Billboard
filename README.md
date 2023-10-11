@@ -14,6 +14,9 @@ Before you can clone or pull this repository, please ensure that you have Git LF
 
 If you don't have Git LFS installed, you can download and install it from [https://git-lfs.github.com/](https://git-lfs.github.com/).
 
+## Extra pont 
+we create a dictionary performer_counts to store the count of each performer. We then iterate through the billboard data, extract the performer's name from each entry, and update the count in the dictionary. Finally, we use the max function to find the performer with the highest count, which represents the most-listened performer. 
+
 ## How to Run
 TODO: 
 Describe your dataset, such as what is the input? did you have a meaning for the input feature? what is the output? how do you find this dataset? How to run your code? etc.
