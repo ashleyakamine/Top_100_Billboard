@@ -4,7 +4,7 @@
  Course: CS 330
  Semester: 2023
  Instructor: Dr. Cao
- Date: 10/10/
+ Date: 10/10/2023
  Sources consulted: any books, individuals, etc consulted
 
  Known Bugs: description of known bugs and other program imperfections
@@ -16,6 +16,7 @@
 import sys
 import argparse
 import math
+import csv  
 
 def splitData(data, trainData, testData, ratio):
     """
@@ -76,10 +77,9 @@ def most_listened_performer(billboard_data):
 
     return most_listened_performer
 
-file_path = 'billboard.csv'
+file_path = r'.\data\billboard.csv'
 most_listened = most_listened_performer(file_path)
 print("The most-listened performer is:", most_listened)
-
 
 
 
