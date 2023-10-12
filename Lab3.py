@@ -17,7 +17,9 @@ import random
 import sys
 import argparse
 import math
-import csv  
+import csv
+
+import pandas as pd  
 
 def splitData(data, trainData, testData, ratio):
     """
@@ -65,8 +67,6 @@ def splitDataRandom(data, trainData, testData, ratio):
     trainData.extend(data[:num_train_samples])
     testData.extend(data[num_train_samples:])
 
-# write a function that outputs the most listned to preformer 
-
 def most_listened_performer(billboard_data):
     # Create a dictionary to store performer counts
     performer_counts = {}
@@ -86,9 +86,39 @@ def most_listened_performer(billboard_data):
 
     return most_listened_performer
 
+def calculate_correlations(data, column_pairs, method='pearson'):
+    """
+    Calculate correlations for specified column pairs in a DataFrame.
+    Input:
+        data (pd.DataFrame): The DataFrame containing the data.
+        column_pairs (list of tuples): List of column pairs for which you want to calculate correlations.
+        method (str, optional): The correlation method to use ('pearson' or 'spearman'). Default is 'pearson'.
+    Output:
+        dict: A dictionary where keys are the column pairs, and values are the corresponding correlation coefficients.
+    Example: 
+        calculate_correlations(file_path, [('weeks_on_chart', 'week_position')], method='pearson') would calculate the correlation 
+        coeffiecient between 'weeks_on_chart' and 'week_position'
+    """
+    df = pd.read_csv(file_path)
+    
+    correlations = {}
+    
+    for pair in column_pairs:
+        col1, col2 = pair
+        correlation = df[col1].corr(df[col2], method=method)
+        correlations[f"{col1} vs {col2}"] = correlation
+
+    return correlations
+
+
 file_path = r'.\data\billboard.csv'
 most_listened = most_listened_performer(file_path)
 print("The most-listened performer is:", most_listened)
+
+correlations = calculate_correlations(file_path, [('week_position', 'previous_week_position'),], method='pearson')
+
+for column_pair, correlation in correlations.items():
+    print(f"Correlation for {column_pair}: {correlation}")
 
 def main():
     options = parser.parse_args()
@@ -127,9 +157,6 @@ def showHelper():
     # your code here
 
     sys.exit(0)
-
-
-
 
 if __name__ == "__main__":
     #------------------------arguments------------------------------#
