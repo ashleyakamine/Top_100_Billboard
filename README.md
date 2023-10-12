@@ -17,6 +17,4 @@ If you don't have Git LFS installed, you can download and install it from [https
 ## Extra pont 
 we create a dictionary performer_counts to store the count of each performer. We then iterate through the billboard data, extract the performer's name from each entry, and update the count in the dictionary. Finally, we use the max function to find the performer with the highest count, which represents the most-listened performer. 
 
-## How to Run
-TODO: 
-Describe your dataset, such as what is the input? did you have a meaning for the input feature? what is the output? how do you find this dataset? How to run your code? etc.
+We also created the calculate_correlations method to calculate the correlation coefficient between any two given columns. It takes in the dataframe, and a list of column tuples (if you would like to calculate many correlation coefficients at once). It will output a dictionary with a the two columns mapped to their corresponding correlation coeffiencent.

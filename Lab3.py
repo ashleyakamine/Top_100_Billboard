@@ -92,7 +92,6 @@ def calculate_correlations(data, column_pairs, method='pearson'):
     Input:
         data (pd.DataFrame): The DataFrame containing the data.
         column_pairs (list of tuples): List of column pairs for which you want to calculate correlations.
-        method (str, optional): The correlation method to use ('pearson' or 'spearman'). Default is 'pearson'.
     Output:
         dict: A dictionary where keys are the column pairs, and values are the corresponding correlation coefficients.
     Example: 
@@ -105,7 +104,7 @@ def calculate_correlations(data, column_pairs, method='pearson'):
     
     for pair in column_pairs:
         col1, col2 = pair
-        correlation = df[col1].corr(df[col2], method=method)
+        correlation = df[col1].corr(df[col2], method='pearson')
         correlations[f"{col1} vs {col2}"] = correlation
 
     return correlations
@@ -115,7 +114,7 @@ file_path = r'.\data\billboard.csv'
 most_listened = most_listened_performer(file_path)
 print("The most-listened performer is:", most_listened)
 
-correlations = calculate_correlations(file_path, [('week_position', 'previous_week_position'),], method='pearson')
+correlations = calculate_correlations(file_path, [('week_position', 'previous_week_position'),])
 
 for column_pair, correlation in correlations.items():
     print(f"Correlation for {column_pair}: {correlation}")
