@@ -13,6 +13,7 @@
 
  Instructions: instructions to user on how to execute your program
 """
+import random
 import sys
 import argparse
 import math
@@ -53,8 +54,16 @@ def splitDataRandom(data, trainData, testData, ratio):
     Instruction:
             Almost same as splitData, the only difference is this function will randomly shuffle the input data, so you will randomly select data and store it in the trainData
     """
-    # your code here
-    pass
+    if ratio < 0 or ratio > 1:
+        raise ValueError("Ratio should be between 0 and 1.")
+    
+    random.shuffle(data)
+
+    num_samples = len(data)
+    num_train_samples = int(num_samples * ratio)
+
+    trainData.extend(data[:num_train_samples])
+    testData.extend(data[num_train_samples:])
 
 # write a function that outputs the most listned to preformer 
 
@@ -80,8 +89,6 @@ def most_listened_performer(billboard_data):
 file_path = r'.\data\billboard.csv'
 most_listened = most_listened_performer(file_path)
 print("The most-listened performer is:", most_listened)
-
-
 
 def main():
     options = parser.parse_args()
